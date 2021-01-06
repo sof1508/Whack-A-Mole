@@ -13,27 +13,21 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.widget.ImageView;
 
 public class MyView extends View{
-    Random random = new Random();
-    Paint paint = new Paint();
+
 
     private GestureDetector gDet;
 
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        paint.setAntiAlias(true);
-        paint.setStrokeWidth(6f);
-        paint.setColor(Color.BLACK);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeJoin(Paint.Join.ROUND);
 
     }
 
-    @Override
-    protected void onDraw (Canvas cnv) {
-        super.onDraw(cnv);
-    }
+
+
+
 
     @Override
     public boolean onTouchEvent (MotionEvent event) {
