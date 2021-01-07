@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,25 +49,25 @@ public class MainActivity extends AppCompatActivity {
     }
     public void ocultarTopos(){
         ImageView topo = (ImageView)findViewById(R.id.topo);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo2);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo3);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo4);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo5);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo6);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo7);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo8);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo9);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo10);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
     }
 
     public void mostrarTopo(){
@@ -99,11 +101,23 @@ public class MainActivity extends AppCompatActivity {
     public void ocultarTopo(int indice){
         int id = (int)toposId.get(indice);
         ImageView topo = (ImageView) findViewById(id);
-        topo.setVisibility(View.INVISIBLE);
+        topo.setVisibility(View.GONE);
         topoSelecionados.set(indice,false);
     }
 
     public void jugar(){
+        new CountDownTimer(30000, 1000) {
+            TextView contador = (TextView)findViewById(R.id.contador);
+            public void onTick(long millisUntilFinished) {
+                contador.setText("00:" + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                contador.setText("done!");
+                //stop juego
+                //alert  con restart
+            }
+        }.start();
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -119,6 +133,11 @@ public class MainActivity extends AppCompatActivity {
         // lo que tarda en salir el topo ---> aumentar según tiempo
         timer.scheduleAtFixedRate(task, new Date(), velocidadJuego * 3);
 
+
+
+    }
+
+    public void stopJuego(){
 
 
     }
