@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> toposId = new ArrayList<Integer>();
     ArrayList<Boolean> topoSelecionados = new ArrayList<Boolean>();
     Random random = new Random();
+    int velocidadJuego = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         ocultarTopos();
         cargarTopos();
-        // hacer timer del juego ir ejecutando mostrar cada cierto tiempo random
-
-        for(int i = 0; i<3000;i++){
-            mostrarTopo();
-        }
-
+        jugar();
     }
 
 
@@ -78,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView topo = (ImageView) findViewById(randomId);
             topo.setVisibility(View.VISIBLE);
             topoSelecionados.set(indice,true);
-            int delay = (int)(random.nextDouble()* 3000 + 2000);
+            int delay = (int)(random.nextDouble()* 3000 + 500);
             Timer timer = new Timer();
             TimerTask task = new TimerTask(){
                 @Override
@@ -92,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-            timer.schedule(task, delay);
+            timer.schedule(task, delay); // aumentar según tiempo (disminuir)
 
         }
         else{
@@ -104,5 +101,25 @@ public class MainActivity extends AppCompatActivity {
         ImageView topo = (ImageView) findViewById(id);
         topo.setVisibility(View.INVISIBLE);
         topoSelecionados.set(indice,false);
+    }
+
+    public void jugar(){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mostrarTopo();
+                    }
+                });
+            }
+        };
+        // lo que tarda en salir el topo ---> aumentar según tiempo
+        timer.scheduleAtFixedRate(task, new Date(), velocidadJuego * 3);
+
+
+
     }
 }
