@@ -1,7 +1,9 @@
 package com.example.whac_a_mole;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,8 +20,11 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> toposId = new ArrayList<Integer>();
     ArrayList<Boolean> topoSelecionados = new ArrayList<Boolean>();
+    AlertDialog.Builder construirDialogo;
+    AlertDialog dialogo;
     Random random = new Random();
     int velocidadJuego = 500;
+    int puntuacion = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-            timer.schedule(task, delay); // aumentar según tiempo (disminuir)
+            timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
 
         }
         else{
@@ -106,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jugar(){
+        //cronometro del juego
+        // 30s
+        // llamada onTick cada 1000ms -> 1s
         new CountDownTimer(30000, 1000) {
             TextView contador = (TextView)findViewById(R.id.contador);
             public void onTick(long millisUntilFinished) {
@@ -113,9 +121,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                contador.setText("done!");
+                contador.setText("FIN");
                 //stop juego
-                //alert  con restart
+
+                //Alerta con restart
+                cargarDialogo();
+                dialogo = construirDialogo.create();
+                dialogo.show();
             }
         }.start();
         Timer timer = new Timer();
@@ -130,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         };
-        // lo que tarda en salir el topo ---> aumentar según tiempo
+        // lo que tarda en salir el topo ---> disminuir según tiempo
         timer.scheduleAtFixedRate(task, new Date(), velocidadJuego * 3);
 
 
@@ -140,5 +152,23 @@ public class MainActivity extends AppCompatActivity {
     public void stopJuego(){
 
 
+    }
+
+    public void cargarDialogo(){
+        construirDialogo = new AlertDialog.Builder(MainActivity.this);
+        construirDialogo.setTitle("Fin del juego");
+        construirDialogo.setMessage("La puntuación final del juego es " + puntuacion);
+        construirDialogo.setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // rejugar
+            }
+        });
+        construirDialogo.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
     }
 }
