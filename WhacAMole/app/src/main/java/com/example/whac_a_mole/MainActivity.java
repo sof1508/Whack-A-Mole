@@ -7,6 +7,7 @@ import androidx.core.view.GestureDetectorCompat;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -24,6 +25,10 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+    ImageView image;
+    Resources r = getResources();
+    String name = getPackageName();
+
     ArrayList<Integer> toposId = new ArrayList<Integer>();
     ArrayList<Integer> toposCascoId = new ArrayList<Integer>();
     ArrayList<Boolean> hoyoSelecionados = new ArrayList<Boolean>();
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         goneTopos();
         cargarTopos();
+        setUpTopoListener();
         jugar();
     }
 
@@ -55,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-
 
     public void cargarTopos(){
         //topos normales
@@ -126,6 +131,30 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         topoCasco.setVisibility(View.GONE);
         topoCasco = (ImageView)findViewById(R.id.topoCasco10);
         topoCasco.setVisibility(View.GONE);
+    }
+
+    public void setUpTopoListener() {
+        View.OnTouchListener touch = new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                Log.d("OnTouchListener", "Topo tocado");
+                return false;
+            }
+        };
+        for(int i = 1; i < toposId.size(); i++) {
+            Log.d("", "Listener Topo num: " + i);
+            if (i == 1) { findViewById(r.getIdentifier("topo", "id", name)).setOnTouchListener(touch); }
+            else {
+                findViewById(r.getIdentifier("topo" + i, "id", name)).setOnTouchListener(touch);
+            }
+        }
+        for(int i = 1; i < toposCascoId.size(); i++) {
+            Log.d("", "Listener Topo num: " + i);
+            if (i == 1) { findViewById(r.getIdentifier("topoCasco", "id", name)).setOnTouchListener(touch); }
+            else {
+                findViewById(r.getIdentifier("topoCasco" + i, "id", name)).setOnTouchListener(touch);
+            }
+        }
     }
 
     public void mostrarTopo(){
