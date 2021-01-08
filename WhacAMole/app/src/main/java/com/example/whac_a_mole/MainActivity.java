@@ -19,6 +19,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> toposId = new ArrayList<Integer>();
+    ArrayList<Integer> toposCascoId = new ArrayList<Integer>();
     ArrayList<Boolean> hoyoSelecionados = new ArrayList<Boolean>();
     AlertDialog.Builder construirDialogo;
     AlertDialog dialogo;
@@ -31,13 +32,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        ocultarTopos();
+        goneTopos();
         cargarTopos();
         jugar();
     }
 
 
     public void cargarTopos(){
+        //topos normales
         toposId.add(R.id.topo);
         toposId.add(R.id.topo2);
         toposId.add(R.id.topo3);
@@ -48,11 +50,22 @@ public class MainActivity extends AppCompatActivity {
         toposId.add(R.id.topo8);
         toposId.add(R.id.topo9);
         toposId.add(R.id.topo10);
+        //Topos con casco
+        toposCascoId.add(R.id.topoCasco);
+        toposCascoId.add(R.id.topoCasco2);
+        toposCascoId.add(R.id.topoCasco3);
+        toposCascoId.add(R.id.topoCasco4);
+        toposCascoId.add(R.id.topoCasco5);
+        toposCascoId.add(R.id.topoCasco6);
+        toposCascoId.add(R.id.topoCasco7);
+        toposCascoId.add(R.id.topoCasco8);
+        toposCascoId.add(R.id.topoCasco9);
+        toposCascoId.add(R.id.topoCasco10);
         for(int i = 0; i < toposId.size(); i++) {
             hoyoSelecionados.add(false);
         }
     }
-    public void ocultarTopos(){
+    public void goneTopos(){
         ImageView topo = (ImageView)findViewById(R.id.topo);
         topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo2);
@@ -73,16 +86,37 @@ public class MainActivity extends AppCompatActivity {
         topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo10);
         topo.setVisibility(View.GONE);
+        ImageView topoCasco = (ImageView)findViewById(R.id.topoCasco);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco2);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco3);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco4);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco5);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco6);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco7);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco8);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco9);
+        topoCasco.setVisibility(View.GONE);
+        topoCasco = (ImageView)findViewById(R.id.topoCasco10);
+        topoCasco.setVisibility(View.GONE);
     }
 
     public void mostrarTopo(){
         int indice = (int)(random.nextDouble()*10);
         if (hoyoSelecionados.get(indice) == false) {
+            hoyoSelecionados.set(indice,true);
             int randomId = (int)toposId.get(indice);
             ImageView topo = (ImageView) findViewById(randomId);
             topo.setVisibility(View.VISIBLE);
-            hoyoSelecionados.set(indice,true);
-            int delay = (int)(random.nextDouble()* 3000 + 500);
+
+            int delay = (int)(random.nextDouble()* 2000 + 1000);
             Timer timer = new Timer();
             TimerTask task = new TimerTask(){
                 @Override
@@ -91,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             ocultarTopo(indice);
+                            mostrarTopoCasco();
                         }
                     });
                 }
             };
-
             timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
 
         }
@@ -103,11 +137,49 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void mostrarTopoCasco() {
+        int indice = (int) (random.nextDouble() * 10);
+        if (hoyoSelecionados.get(indice) == false) {
+            hoyoSelecionados.set(indice, true);
+            int randomId = (int) toposCascoId.get(indice);
+            ImageView topoCasco = (ImageView) findViewById(randomId);
+            topoCasco.setVisibility(View.VISIBLE);
+
+            int delay = (int) (random.nextDouble() * 2000 + 1000);
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ocultarTopoCasco(indice);
+                        }
+                    });
+                }
+            };
+            timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
+        } else {
+        }
+    }
+
     public void ocultarTopo(int indice){
         int id = (int)toposId.get(indice);
         ImageView topo = (ImageView) findViewById(id);
         topo.setVisibility(View.GONE);
+        // wait un segundo
         hoyoSelecionados.set(indice,false);
+
+    }
+
+    public void ocultarTopoCasco(int indice){
+        int id = (int)toposCascoId.get(indice);
+        ImageView topoCasco = (ImageView) findViewById(id);
+        topoCasco.setVisibility(View.GONE);
+        Timer timer = new Timer();
+        //wait un segundo
+        hoyoSelecionados.set(indice,false);
+
     }
 
     public void jugar(){

@@ -56,7 +56,7 @@
         app:layout_constraintTop_toTopOf="@+id/view">
 
         <ImageView
-            android:id="@+id/agujero"
+            android:id="@+id/hoyo"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -66,6 +66,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
 
     </FrameLayout>
 
@@ -87,7 +93,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero2"
+            android:id="@+id/hoyo2"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -97,6 +103,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
 
     </FrameLayout>
 
@@ -118,7 +130,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero3"
+            android:id="@+id/hoyo3"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -128,6 +140,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
 
     </FrameLayout>
 
@@ -147,7 +165,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero4"
+            android:id="@+id/hoyo4"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -157,6 +175,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
 
     </FrameLayout>
 
@@ -177,7 +201,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero5"
+            android:id="@+id/hoyo5"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -187,6 +211,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
     </FrameLayout>
 
     <FrameLayout
@@ -207,7 +237,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero6"
+            android:id="@+id/hoyo6"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -217,6 +247,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
     </FrameLayout>
 
     <FrameLayout
@@ -235,7 +271,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero7"
+            android:id="@+id/hoyo7"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -245,6 +281,13 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -265,7 +308,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero8"
+            android:id="@+id/hoyo8"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -275,6 +318,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
 
     </FrameLayout>
 
@@ -296,7 +345,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero9"
+            android:id="@+id/hoyo9"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -306,6 +355,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
 
     </FrameLayout>
 
@@ -327,7 +382,7 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/agujero10"
+            android:id="@+id/hoyo10"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
@@ -337,6 +392,13 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoCasco10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocasco" />
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
