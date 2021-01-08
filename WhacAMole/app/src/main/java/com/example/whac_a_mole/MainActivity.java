@@ -270,6 +270,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     }
 
+    public void sumarPuntos(int punto){
+        TextView puntos = (TextView)findViewById(R.id.puntos);
+        puntuacion = puntuacion + punto;
+        puntos.setText(puntuacion);
+    }
+
     public void cargarDialogo(){
         construirDialogo = new AlertDialog.Builder(this);
         construirDialogo.setTitle("Fin del juego");
