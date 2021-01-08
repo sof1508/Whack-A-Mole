@@ -26,11 +26,10 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
     ImageView image;
-    Resources r = getResources();
-    String name = getPackageName();
 
     ArrayList<Integer> toposId = new ArrayList<Integer>();
     ArrayList<Integer> toposCascoId = new ArrayList<Integer>();
+    int numTopos = 10;
     ArrayList<Boolean> hoyoSelecionados = new ArrayList<Boolean>();
     AlertDialog.Builder construirDialogo;
     AlertDialog dialogo;
@@ -49,9 +48,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         mDet = new GestureDetectorCompat(this, this);
         mDet.setOnDoubleTapListener(this);
 
-        goneTopos();
-        cargarTopos();
-        setUpTopoListener();
+        setUpTopos();
         jugar();
     }
 
@@ -63,81 +60,15 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         startActivity(intent);
     }
 
-    public void cargarTopos(){
-        //topos normales
-        toposId.add(R.id.topo);
-        toposId.add(R.id.topo2);
-        toposId.add(R.id.topo3);
-        toposId.add(R.id.topo4);
-        toposId.add(R.id.topo5);
-        toposId.add(R.id.topo6);
-        toposId.add(R.id.topo7);
-        toposId.add(R.id.topo8);
-        toposId.add(R.id.topo9);
-        toposId.add(R.id.topo10);
-        //Topos con casco
-        toposCascoId.add(R.id.topoCasco);
-        toposCascoId.add(R.id.topoCasco2);
-        toposCascoId.add(R.id.topoCasco3);
-        toposCascoId.add(R.id.topoCasco4);
-        toposCascoId.add(R.id.topoCasco5);
-        toposCascoId.add(R.id.topoCasco6);
-        toposCascoId.add(R.id.topoCasco7);
-        toposCascoId.add(R.id.topoCasco8);
-        toposCascoId.add(R.id.topoCasco9);
-        toposCascoId.add(R.id.topoCasco10);
-        for(int i = 0; i < toposId.size(); i++) {
-            hoyoSelecionados.add(false);
-        }
-    }
+    public void setUpTopos() {
+        Resources r = getResources();
+        String name = getPackageName();
 
-    public void goneTopos(){
-        //topos normales
-        ImageView topo = (ImageView)findViewById(R.id.topo);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo2);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo3);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo4);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo5);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo6);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo7);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo8);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo9);
-        topo.setVisibility(View.GONE);
-        topo = (ImageView)findViewById(R.id.topo10);
-        topo.setVisibility(View.GONE);
+        ImageView topo;
+        ImageView topoCasco;
+        int id = -1;
+        int idConCasco = -1;
 
-        //Topos con casco
-        ImageView topoCasco = (ImageView)findViewById(R.id.topoCasco);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco2);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco3);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco4);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco5);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco6);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco7);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco8);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco9);
-        topoCasco.setVisibility(View.GONE);
-        topoCasco = (ImageView)findViewById(R.id.topoCasco10);
-        topoCasco.setVisibility(View.GONE);
-    }
-
-    public void setUpTopoListener() {
         View.OnTouchListener touch = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -145,19 +76,32 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 return false;
             }
         };
-        for(int i = 1; i < toposId.size(); i++) {
-            Log.d("", "Listener Topo num: " + i);
-            if (i == 1) { findViewById(r.getIdentifier("topo", "id", name)).setOnTouchListener(touch); }
-            else {
-                findViewById(r.getIdentifier("topo" + i, "id", name)).setOnTouchListener(touch);
+
+        for(int i = 1; i <= numTopos; i++) {
+            if (i == 1) {
+                id = r.getIdentifier("topo", "id", name);
+                idConCasco = r.getIdentifier("topoCasco", "id", name);
+
+                topo = (ImageView) findViewById(id);
+                topoCasco = (ImageView) findViewById(idConCasco);
             }
-        }
-        for(int i = 1; i < toposCascoId.size(); i++) {
-            Log.d("", "Listener Topo num: " + i);
-            if (i == 1) { findViewById(r.getIdentifier("topoCasco", "id", name)).setOnTouchListener(touch); }
             else {
-                findViewById(r.getIdentifier("topoCasco" + i, "id", name)).setOnTouchListener(touch);
+                id = r.getIdentifier("topo" + i, "id", name);
+                idConCasco = r.getIdentifier("topoCasco" + i, "id", name);
+                topo = findViewById(id);
+                topoCasco = findViewById(idConCasco);
             }
+
+            topo.setVisibility(View.GONE);
+            topoCasco.setVisibility(View.GONE);
+
+            topo.setOnTouchListener(touch);
+            topoCasco.setOnTouchListener(touch);
+
+            toposId.add(id);
+            toposCascoId.add(idConCasco);
+
+            hoyoSelecionados.add(false);
         }
     }
 
