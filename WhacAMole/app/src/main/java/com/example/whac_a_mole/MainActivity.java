@@ -19,7 +19,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> toposId = new ArrayList<Integer>();
-    ArrayList<Boolean> topoSelecionados = new ArrayList<Boolean>();
+    ArrayList<Boolean> hoyoSelecionados = new ArrayList<Boolean>();
     AlertDialog.Builder construirDialogo;
     AlertDialog dialogo;
     Random random = new Random();
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         toposId.add(R.id.topo9);
         toposId.add(R.id.topo10);
         for(int i = 0; i < toposId.size(); i++) {
-            topoSelecionados.add(false);
+            hoyoSelecionados.add(false);
         }
     }
     public void ocultarTopos(){
@@ -77,11 +77,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void mostrarTopo(){
         int indice = (int)(random.nextDouble()*10);
-        if (topoSelecionados.get(indice) == false) {
+        if (hoyoSelecionados.get(indice) == false) {
             int randomId = (int)toposId.get(indice);
             ImageView topo = (ImageView) findViewById(randomId);
             topo.setVisibility(View.VISIBLE);
-            topoSelecionados.set(indice,true);
+            hoyoSelecionados.set(indice,true);
             int delay = (int)(random.nextDouble()* 3000 + 500);
             Timer timer = new Timer();
             TimerTask task = new TimerTask(){
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         int id = (int)toposId.get(indice);
         ImageView topo = (ImageView) findViewById(id);
         topo.setVisibility(View.GONE);
-        topoSelecionados.set(indice,false);
+        hoyoSelecionados.set(indice,false);
     }
 
     public void jugar(){
