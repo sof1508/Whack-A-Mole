@@ -17,49 +17,13 @@ import android.widget.ImageView;
 
 public class MyView extends View{
 
-
-    private GestureDetector gDet;
-
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
     }
 
-
-
-
-
     @Override
     public boolean onTouchEvent (MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                break;
-        }
-        return true;
+        return super.onTouchEvent(event);
     }
-
-    private void setupGesture() {
-        gDet = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onDoubleTap(MotionEvent e) {
-                //Notified when a double-tap occurs
-                return true;
-            }
-
-            @Override
-            public boolean onDoubleTapEvent(MotionEvent e) {
-                //Notified when an event within a double-tap gesture occurs
-                return true;
-            }
-        });
-
-        setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                return gDet.onTouchEvent(motionEvent);
-            }
-        });
-    }
-
-    private void validate() { this.invalidate(); }
 }

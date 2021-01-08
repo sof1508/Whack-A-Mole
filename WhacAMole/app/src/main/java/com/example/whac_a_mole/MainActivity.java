@@ -2,11 +2,16 @@ package com.example.whac_a_mole;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,13 +21,15 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
     ArrayList<Integer> toposId = new ArrayList<Integer>();
     ArrayList<Integer> toposCascoId = new ArrayList<Integer>();
     ArrayList<Boolean> hoyoSelecionados = new ArrayList<Boolean>();
     AlertDialog.Builder construirDialogo;
     AlertDialog dialogo;
+    GestureDetectorCompat mDet;
     Random random = new Random();
     int velocidadJuego = 500;
     int puntuacion = 0;
@@ -32,9 +39,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        mDet = new GestureDetectorCompat(this, this);
+        mDet.setOnDoubleTapListener(this);
+
         goneTopos();
         cargarTopos();
         jugar();
+    }
+
+    //Método para reiniciar el juego
+    protected void restart() {
+        Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
 
@@ -65,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             hoyoSelecionados.add(false);
         }
     }
+
     public void goneTopos(){
         ImageView topo = (ImageView)findViewById(R.id.topo);
         topo.setVisibility(View.GONE);
@@ -167,9 +187,19 @@ public class MainActivity extends AppCompatActivity {
         int id = (int)toposId.get(indice);
         ImageView topo = (ImageView) findViewById(id);
         topo.setVisibility(View.GONE);
-        // wait un segundo
-        hoyoSelecionados.set(indice,false);
-
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hoyoSelecionados.set(indice,false);
+                    }
+                });
+            }
+        };
+        timer.schedule(task, 1000);
     }
 
     public void ocultarTopoCasco(int indice){
@@ -177,8 +207,18 @@ public class MainActivity extends AppCompatActivity {
         ImageView topoCasco = (ImageView) findViewById(id);
         topoCasco.setVisibility(View.GONE);
         Timer timer = new Timer();
-        //wait un segundo
-        hoyoSelecionados.set(indice,false);
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hoyoSelecionados.set(indice,false);
+                    }
+                });
+            }
+        };
+        timer.schedule(task, 1000);
 
     }
 
@@ -189,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
         new CountDownTimer(30000, 1000) {
             TextView contador = (TextView)findViewById(R.id.contador);
             public void onTick(long millisUntilFinished) {
-                contador.setText("00:" + millisUntilFinished / 1000);
+                contador.setText("00:" + String.format("%02d", millisUntilFinished / 1000));
             }
 
             public void onFinish() {
@@ -216,9 +256,6 @@ public class MainActivity extends AppCompatActivity {
         };
         // lo que tarda en salir el topo ---> disminuir según tiempo
         timer.scheduleAtFixedRate(task, new Date(), velocidadJuego * 3);
-
-
-
     }
 
     public void stopJuego(){
@@ -233,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
         construirDialogo.setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // rejugar
+                restart();
             }
         });
         construirDialogo.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
@@ -243,4 +280,60 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (this.mDet.onTouchEvent(event)) {
+            return true;
+        }
+        return super.onTouchEvent(event);
+    }
+
+
+    @Override
+    public boolean onSingleTapConfirmed(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTap(MotionEvent motionEvent) {
+        Log.d("MAINACTIVITY", "ONDOUBLETAP");
+        return true;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
 }
