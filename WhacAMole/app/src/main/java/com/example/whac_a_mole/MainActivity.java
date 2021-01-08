@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     Random random = new Random();
     int velocidadJuego = 500;
     int puntuacion = 0;
-    int tiempoJuego = 10000;
+    int tiempoJuego = 60000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         mDet.setOnDoubleTapListener(this);
 
         setUpTopos();
+        setUpPuntuacion();
         jugar();
     }
 
@@ -68,12 +69,29 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         ImageView topoCasco;
         int id = -1;
         int idConCasco = -1;
-
         View.OnTouchListener touch = new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+            public boolean onTouch(View view, MotionEvent event) {
                 Log.d("OnTouchListener", "Topo tocado");
-                return false;
+                int prueba = view.getId();
+                Log.d("fuente", String.valueOf(prueba));
+                 for (int i = 1; i <= numTopos; i++) {
+                            if (i == 1) {
+                                int idTocado = r.getIdentifier("topo", "id", name);
+                                if (view.getId() == idTocado) {
+                                    ocultarTopo(0);
+                                    sumarPuntos(10);
+                                }
+
+                            } else {
+                                int idTocado = r.getIdentifier("topo" + i, "id", name);
+                                if (view.getId() == idTocado) {
+                                    ocultarTopo(i - 1);
+                                    sumarPuntos(10);
+                                }
+                            }
+                        }
+                return true;
             }
         };
 
@@ -212,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             public void onFinish() {
                 contador.setText("FIN");
                 //stop juego
-
+                stopJuego();
                 //Alerta con restart
                 cargarDialogo();
                 dialogo = construirDialogo.create();
@@ -240,13 +258,19 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     public void stopJuego(){
 
-
     }
+
+    public void setUpPuntuacion() {
+        TextView puntos = (TextView)findViewById(R.id.puntos);
+        puntuacion = 0;
+        puntos.setText("Puntos: " + puntuacion);
+    }
+
 
     public void sumarPuntos(int punto){
         TextView puntos = (TextView)findViewById(R.id.puntos);
         puntuacion = puntuacion + punto;
-        puntos.setText(puntuacion);
+        puntos.setText("Puntos: " + puntuacion);
     }
 
     public void cargarDialogo(){
