@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     Random random = new Random();
     int velocidadJuego = 500;
     int puntuacion = 0;
+    int tiempoJuego = 10000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void goneTopos(){
+        //topos normales
         ImageView topo = (ImageView)findViewById(R.id.topo);
         topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo2);
@@ -106,6 +108,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         topo.setVisibility(View.GONE);
         topo = (ImageView)findViewById(R.id.topo10);
         topo.setVisibility(View.GONE);
+
+        //Topos con casco
         ImageView topoCasco = (ImageView)findViewById(R.id.topoCasco);
         topoCasco.setVisibility(View.GONE);
         topoCasco = (ImageView)findViewById(R.id.topoCasco2);
@@ -224,9 +228,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     public void jugar(){
         //cronometro del juego
-        // 30s
+        // tiempo de juego establecido
         // llamada onTick cada 1000ms -> 1s
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(tiempoJuego, 1000) {
             TextView contador = (TextView)findViewById(R.id.contador);
             public void onTick(long millisUntilFinished) {
                 contador.setText("00:" + String.format("%02d", millisUntilFinished / 1000));
@@ -239,7 +243,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 //Alerta con restart
                 cargarDialogo();
                 dialogo = construirDialogo.create();
-                dialogo.show();
+                if(dialogo != null && !dialogo.isShowing()) {
+                    dialogo.show();
+                }
+
             }
         }.start();
         Timer timer = new Timer();
@@ -264,7 +271,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void cargarDialogo(){
-        construirDialogo = new AlertDialog.Builder(MainActivity.this);
+        construirDialogo = new AlertDialog.Builder(this);
         construirDialogo.setTitle("Fin del juego");
         construirDialogo.setMessage("La puntuación final del juego es " + puntuacion);
         construirDialogo.setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
