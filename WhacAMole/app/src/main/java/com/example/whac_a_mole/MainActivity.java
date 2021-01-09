@@ -67,8 +67,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         ImageView topo;
         ImageView topoCasco;
+        ImageView whack;
+        ImageView whackCasco;
         int id = -1;
         int idConCasco = -1;
+        int idWhack = -1;
+        int idWhackCasco = -1;
+
         View.OnTouchListener touch = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -100,19 +105,27 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             if (i == 1) {
                 id = r.getIdentifier("topo", "id", name);
                 idConCasco = r.getIdentifier("topoCasco", "id", name);
+                idWhack = r.getIdentifier("topoWhack", "id", name);
+                idWhackCasco = r.getIdentifier("topoCascoWhack", "id", name);
 
-                topo = (ImageView) findViewById(id);
-                topoCasco = (ImageView) findViewById(idConCasco);
+
             }
             else {
                 id = r.getIdentifier("topo" + i, "id", name);
                 idConCasco = r.getIdentifier("topoCasco" + i, "id", name);
-                topo = findViewById(id);
-                topoCasco = findViewById(idConCasco);
+                idWhack = r.getIdentifier("topoWhack" + i, "id", name);
+                idWhackCasco = r.getIdentifier("topoCascoWhack" + i, "id", name);
             }
+
+            topo = (ImageView) findViewById(id);
+            topoCasco = (ImageView) findViewById(idConCasco);
+            whack = (ImageView) findViewById(idWhack);
+            whackCasco = (ImageView) findViewById(idWhackCasco);
 
             topo.setVisibility(View.GONE);
             topoCasco.setVisibility(View.GONE);
+            whack.setVisibility(View.GONE);
+            whackCasco.setVisibility(View.GONE );
 
             topo.setOnTouchListener(touch);
             topoCasco.setOnTouchListener(touch);
