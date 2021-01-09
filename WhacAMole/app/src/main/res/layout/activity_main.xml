@@ -41,6 +41,7 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/frameLayout11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -81,18 +82,6 @@
         app:layout_constraintTop_toTopOf="@+id/view">
 
         <ImageView
-            android:id="@+id/topoWhack"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
-            android:id="@+id/topoCascoWhack"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -105,10 +94,34 @@
             app:srcCompat="@drawable/topo" />
 
         <ImageView
+            android:id="@+id/topoWhack"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
+
+        <ImageView
             android:id="@+id/topoCasco"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
 
     </FrameLayout>
 
@@ -159,6 +172,18 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocascowhack" />
 
+        <ImageView
+            android:id="@+id/topoBoss2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -179,18 +204,6 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/topoWhack3"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
-            android:id="@+id/topoCascoWhack3"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo3"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -207,6 +220,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoWhack3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
 
     </FrameLayout>
 
@@ -226,18 +263,6 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/topoWhack4"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
-            android:id="@+id/topoCascoWhack4"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo4"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -254,6 +279,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoWhack4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
 
     </FrameLayout>
 
@@ -280,12 +329,6 @@
             app:srcCompat="@drawable/topowhack" />
 
         <ImageView
-            android:id="@+id/topoCascoWhack5"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo5"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -302,6 +345,24 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
     </FrameLayout>
 
     <FrameLayout
@@ -322,18 +383,6 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/topoWhack6"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
-            android:id="@+id/topoCascoWhack6"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo6"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -350,6 +399,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoWhack6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
     </FrameLayout>
 
     <FrameLayout
@@ -368,18 +441,6 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/topoWhack7"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
-            android:id="@+id/topoCascoWhack7"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo7"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -396,6 +457,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoWhack7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
 
     </FrameLayout>
 
@@ -417,18 +502,6 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/topoWhack8"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
-            android:id="@+id/topoCascoWhack8"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo8"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -445,6 +518,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoWhack8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
 
     </FrameLayout>
 
@@ -466,18 +563,6 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/topoWhack9"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
-            android:id="@+id/topoCascoWhack9"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo9"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -494,6 +579,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoWhack9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
 
     </FrameLayout>
 
@@ -515,18 +624,6 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/topoWhack10"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
-            android:id="@+id/topoCascoWhack10"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topocascowhack" />
-
-        <ImageView
             android:id="@+id/hoyo10"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -543,6 +640,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
+
+        <ImageView
+            android:id="@+id/topoWhack10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
+
+        <ImageView
+            android:id="@+id/topoCascoWhack10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topocascowhack" />
+
+        <ImageView
+            android:id="@+id/topoBoss10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bossito" />
+
+        <ImageView
+            android:id="@+id/topoBossWhack10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bosswhack" />
 
     </FrameLayout>
 
