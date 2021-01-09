@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     Random random = new Random();
     int velocidadJuego = 500;
     int puntuacion = 0;
-    int tiempoJuego = 60000;
+    int tiempoJuego = 50000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -337,6 +337,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         construirDialogo = new AlertDialog.Builder(this);
         construirDialogo.setTitle("Fin del juego");
         construirDialogo.setMessage("La puntuación final del juego es " + puntuacion);
+        construirDialogo.setCancelable(false);
         construirDialogo.setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
