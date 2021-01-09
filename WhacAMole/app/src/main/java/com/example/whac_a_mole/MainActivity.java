@@ -335,7 +335,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
 
-
     public void whackTopo(int indice){
         int id = (int)toposWhackId.get(indice);
         ImageView topoWhack = (ImageView) findViewById(id);
@@ -348,6 +347,26 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     @Override
                     public void run() {
                         topoWhack.setVisibility(View.GONE);
+                    }
+                });
+            }
+        };
+        timer.schedule(task, 800);
+    }
+
+
+    public void whackTopoBoos(int indice){
+        int id = (int)toposBossWhackId.get(indice);
+        ImageView topoBossWhack = (ImageView) findViewById(id);
+        topoBossWhack.setVisibility(View.VISIBLE);
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        topoBossWhack.setVisibility(View.GONE);
                     }
                 });
             }
