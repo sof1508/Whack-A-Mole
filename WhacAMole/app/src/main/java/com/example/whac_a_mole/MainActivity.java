@@ -10,10 +10,13 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Debug;
+import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +28,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
     ImageView image;
+    ImageView topoGlobal;
 
     ArrayList<Integer> toposId = new ArrayList<Integer>();
     ArrayList<Integer> toposCascoId = new ArrayList<Integer>();
@@ -77,12 +81,24 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int idCascoWhack = -1;
         int idBossWhack = -1;
 
+
+
         View.OnTouchListener touch = new View.OnTouchListener() {
+            Handler handler = new Handler();
+            int numberOfTaps = 0;
+            long lastTapMs = 0;
+            long touchDownMS = 0;
+            final long DOUBLE_CLICK = 300;
+
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                Log.d("OnTouchListener", "Topo tocado");
+                //Log.d("OnTouchListener", "Topo tocado");
+
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
+                        touchDownMS = System.currentTimeMillis();
+                        numberOfTaps++;
+
                         for (int i = 1; i <= numTopos; i++) {
                             int idTocado = r.getIdentifier("topo" + i, "id", name);
                             if (view.getId() == idTocado) {
@@ -90,7 +106,24 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                                 sumarPuntos(10);
                             }
                         }
-                    break;
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        lastTapMs = System.currentTimeMillis() - touchDownMS;
+
+                        if (numberOfTaps == 2) {
+                            if (lastTapMs < DOUBLE_CLICK) {
+                                Log.d("", "double");
+                                for (int i = 1; i <= numTopos; i++) {
+                                    int idTocado = r.getIdentifier("topoCasco" + i, "id", name);
+                                    if (view.getId() == idTocado) {
+                                        ocultarTopoCasco(i - 1);
+                                        sumarPuntos(20);
+                                    }
+                                }
+                            }
+                            numberOfTaps = 0;
+                        }
+                        break;
                 }
                 return true;
             }
@@ -116,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             topoBoss.setVisibility(View.GONE);
             whack.setVisibility(View.GONE);
             whackCasco.setVisibility(View.GONE );
-            whackBoss.setVisibility(View.GONE);
+            whackBoss.setVisibility(View.GONE );
 
             topo.setOnTouchListener(touch);
             topoCasco.setOnTouchListener(touch);
@@ -183,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         }
     }
 
-    public void ocultarTopo(int indice){
+    public void ocultarTopo(int indice) {
         int id = (int)toposId.get(indice);
         ImageView topo = (ImageView) findViewById(id);
         topo.setVisibility(View.GONE);
@@ -194,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        hoyoSelecionados.set(indice,false);
+                        hoyoSelecionados.set(indice, false);
                     }
                 });
             }
@@ -220,6 +253,18 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         };
         timer.schedule(task, 1000);
 
+    }
+
+    /*
+    * Método que devuelve el ImageView de un topo
+    * El parámetro es el id del topo
+    * Ejemplo: topoWhack8
+    * */
+    public ImageView getTopo(String id) {
+        Resources r = getResources();
+        String name = getPackageName();
+
+        return findViewById(r.getIdentifier(id, "id", name));
     }
 
     public void jugar(){
@@ -322,12 +367,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public boolean onDoubleTap(MotionEvent motionEvent) {
-        Log.d("MAINACTIVITY", "ONDOUBLETAP");
+        //Log.d("MAINACTIVITY", "ONDOUBLETAP");
         return true;
     }
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent motionEvent) {
+        //Log.d("MAINACTIVITY", "ONDOUBLETAPEVENT");
         return false;
     }
 
