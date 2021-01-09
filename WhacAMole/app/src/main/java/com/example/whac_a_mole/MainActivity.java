@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ImageView image;
     ImageView topoGlobal;
 
+    int global = 0;
+
     ArrayList<Integer> toposId = new ArrayList<Integer>();
     ArrayList<Integer> toposWhackId = new ArrayList<Integer>();
     ArrayList<Integer> toposCascoId = new ArrayList<Integer>();
@@ -94,57 +96,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int idCascoWhack = -1;
         int idBossWhack = -1;
 
-
-
-        View.OnTouchListener touch = new View.OnTouchListener() {
-            Handler handler = new Handler();
-            int numberOfTaps = 0;
-            long lastTapMs = 0;
-            long touchDownMS = 0;
-            final long DOUBLE_CLICK = 200;
-
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                //Log.d("OnTouchListener", "Topo tocado");
-
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        touchDownMS = System.currentTimeMillis();
-                        numberOfTaps++;
-
-                        for (int i = 1; i <= numTopos; i++) {
-                            int idTocado = r.getIdentifier("topo" + i, "id", name);
-                            if (view.getId() == idTocado) {
-                                ocultarTopo(i - 1);
-                                whackTopo(i -1);
-                                sumarPuntos(10);
-                            }
-                        }
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        lastTapMs = System.currentTimeMillis() - touchDownMS;
-
-                        if (numberOfTaps == 2) {
-                            if (lastTapMs < DOUBLE_CLICK) {
-                                Log.d("", "double");
-                                for (int i = 1; i <= numTopos; i++) {
-                                    int idTocado = r.getIdentifier("topoCasco" + i, "id", name);
-                                    if (view.getId() == idTocado) {
-                                        ocultarTopoCasco(i - 1);
-                                        whackTopoCasco(i - 1);
-                                        sumarPuntos(20);
-                                    }
-                                }
-                            }
-                            numberOfTaps = 0;
-                        }
-                        break;
-                }
-                return true;
-            }
-        };
-
         for(int i = 1; i <= numTopos; i++) {
+            int iD = i;
             id = r.getIdentifier("topo" + i, "id", name);
             idConCasco = r.getIdentifier("topoCasco" + i, "id", name);
             idBoss = r.getIdentifier("topoBoss" + i, "id", name);
@@ -166,8 +119,39 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             whackCasco.setVisibility(View.GONE );
             whackBoss.setVisibility(View.GONE );
 
-            topo.setOnTouchListener(touch);
-            topoCasco.setOnTouchListener(touch);
+            topo.setOnTouchListener(new View.OnTouchListener() {
+                private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
+                    @Override
+                    public boolean onDown(MotionEvent e) {
+                        ocultarTopo(iD - 1);
+                        whackTopo(iD - 1);
+                        sumarPuntos(10);
+                        return super.onDown(e);
+                    }
+                });
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    gDet.onTouchEvent(motionEvent);
+                    return true;
+                }
+            });
+
+            topoCasco.setOnTouchListener(new View.OnTouchListener() {
+                private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
+                   @Override
+                   public boolean onDoubleTap(MotionEvent e) {
+                       ocultarTopoCasco(iD - 1);
+                       whackTopoCasco(iD - 1);
+                       sumarPuntos(20);
+                       return super.onDoubleTap(e);
+                   }
+                });
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    gDet.onTouchEvent(motionEvent);
+                    return true;
+                }
+            });
 
             toposId.add(id);
             toposCascoId.add(idConCasco);
@@ -335,7 +319,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         return findViewById(r.getIdentifier(id, "id", name));
     }
 
-
     public void whackTopo(int indice){
         int id = (int)toposWhackId.get(indice);
         ImageView topoWhack = (ImageView) findViewById(id);
@@ -354,7 +337,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         };
         timer.schedule(task, 800);
     }
-    
+
     public void whackTopoCasco(int indice){
         int id = (int)toposCascoWhackId.get(indice);
         ImageView topoWhack = (ImageView) findViewById(id);
