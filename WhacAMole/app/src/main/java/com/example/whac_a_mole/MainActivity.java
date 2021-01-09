@@ -230,9 +230,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
             public void onFinish() {
                 contador.setText("FIN");
-                //stop juego
-                stopJuego();
-                //Alerta con restart
+                finJuego();
+
                 cargarDialogo();
                 dialogo = construirDialogo.create();
                 if(dialogo != null && !dialogo.isShowing()) {
@@ -257,7 +256,18 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         timer.scheduleAtFixedRate(task, new Date(), velocidadJuego * 3);
     }
 
-    public void stopJuego(){
+    public void finJuego(){
+        for(int indice = 0; indice <10; indice++){
+            int id = (int)toposId.get(indice);
+            ImageView topo = (ImageView) findViewById(id);
+            topo.setVisibility(View.GONE);
+
+            id = (int)toposCascoId.get(indice);
+            ImageView topoCasco = (ImageView) findViewById(id);
+            topoCasco.setVisibility(View.GONE);
+
+            hoyoSelecionados.set(indice,true);
+        }
 
     }
 
