@@ -323,12 +323,6 @@
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
-            android:id="@+id/topoWhack5"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/topowhack" />
-
-        <ImageView
             android:id="@+id/hoyo5"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -339,6 +333,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
+
+        <ImageView
+            android:id="@+id/topoWhack5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/topowhack" />
 
         <ImageView
             android:id="@+id/topoCasco5"
@@ -666,5 +666,16 @@
             app:srcCompat="@drawable/bosswhack" />
 
     </FrameLayout>
+
+    <View
+        android:id="@+id/alarma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FF0E0E"
+        android:alpha="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
