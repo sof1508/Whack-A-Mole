@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Delayed;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
     ImageView image;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     int puntuacion = 0;
     int tiempoJuego = 60000;
     Boolean aparecerBoss;
+    Boolean stopAlarma;
     Timer timerAlarma;
     TimerTask taskAlarma;
 
@@ -57,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         mDet = new GestureDetectorCompat(this, this);
         mDet.setOnDoubleTapListener(this);
 
-        aparecerBoss = false;
         setUpTopos();
         setUpPuntuacion();
         jugar();
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         View alarma = (View)findViewById(R.id.alarma);
         alarma.setVisibility(View.GONE);
+        aparecerBoss = false;
+        stopAlarma = false;
 
         ImageView topo;
         ImageView topoCasco;
@@ -242,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             ImageView topoBoss = (ImageView) findViewById(randomId);
             topoBoss.setVisibility(View.VISIBLE);
 
-            int delay = (int) (random.nextDouble() * 4000 + 2000);
+            int delay = (int) (random.nextDouble() * 3500 + 2000);
             Timer timer = new Timer();
             TimerTask task = new TimerTask() {
                 @Override
@@ -299,18 +302,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     }
 
-    /*
-    * Método que devuelve el ImageView de un topo
-    * El parámetro es el id del topo
-    * Ejemplo: topoWhack8
-    * */
-    public ImageView getTopo(String id) {
-        Resources r = getResources();
-        String name = getPackageName();
-
-        return findViewById(r.getIdentifier(id, "id", name));
-    }
-
     public void ocultarTopoBoss(int indice){
         int id = (int)toposBossId.get(indice);
         ImageView topoBoss= (ImageView) findViewById(id);
@@ -323,6 +314,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        stopAlarma = true;
                         hoyoSelecionados.set(indice,false);
                     }
                 });
@@ -331,6 +323,18 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         timer.schedule(task, 1000);
 
     }
+    /*
+    * Método que devuelve el ImageView de un topo
+    * El parámetro es el id del topo
+    * Ejemplo: topoWhack8
+    * */
+    public ImageView getTopo(String id) {
+        Resources r = getResources();
+        String name = getPackageName();
+
+        return findViewById(r.getIdentifier(id, "id", name));
+    }
+
 
     public void whackTopo(int indice){
         int id = (int)toposWhackId.get(indice);
@@ -350,7 +354,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         };
         timer.schedule(task, 800);
     }
-
+    
     public void whackTopoCasco(int indice){
         int id = (int)toposCascoWhackId.get(indice);
         ImageView topoWhack = (ImageView) findViewById(id);
@@ -370,6 +374,25 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         timer.schedule(task, 800);
     }
 
+    public void whackTopoBoos(int indice){
+        int id = (int)toposBossWhackId.get(indice);
+        ImageView topoBossWhack = (ImageView) findViewById(id);
+        topoBossWhack.setVisibility(View.VISIBLE);
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        topoBossWhack.setVisibility(View.GONE);
+                    }
+                });
+            }
+        };
+        timer.schedule(task, 800);
+    }
+
     public void iniciarAlarma(){
         View alarma = (View)findViewById(R.id.alarma);
         timerAlarma = new Timer();
@@ -380,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     @Override
                     public void run() {
                         alarma.setVisibility(View.VISIBLE);
-                        if(aparecerBoss) {
+                        if(stopAlarma) {
                             alarma.setVisibility(View.GONE);
                             timerAlarma.cancel();
                             timerAlarma.purge();
