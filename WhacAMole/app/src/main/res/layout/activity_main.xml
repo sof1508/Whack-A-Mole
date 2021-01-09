@@ -88,37 +88,37 @@
             app:srcCompat="@drawable/agujero" />
 
         <ImageView
-            android:id="@+id/topo"
+            android:id="@+id/topo1"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topo" />
 
         <ImageView
-            android:id="@+id/topoWhack"
+            android:id="@+id/topoWhack1"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topowhack" />
 
         <ImageView
-            android:id="@+id/topoCasco"
+            android:id="@+id/topoCasco1"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocasco" />
 
         <ImageView
-            android:id="@+id/topoCascoWhack"
+            android:id="@+id/topoCascoWhack1"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/topocascowhack" />
 
         <ImageView
-            android:id="@+id/topoBoss"
+            android:id="@+id/topoBoss1"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bossito" />
 
         <ImageView
-            android:id="@+id/topoBossWhack"
+            android:id="@+id/topoBossWhack1"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />

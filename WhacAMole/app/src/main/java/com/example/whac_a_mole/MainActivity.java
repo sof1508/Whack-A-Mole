@@ -22,7 +22,6 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
     ImageView image;
@@ -67,12 +66,16 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         ImageView topo;
         ImageView topoCasco;
+        ImageView topoBoss;
         ImageView whack;
         ImageView whackCasco;
+        ImageView whackBoss;
         int id = -1;
         int idConCasco = -1;
+        int idBoss = -1;
         int idWhack = -1;
-        int idWhackCasco = -1;
+        int idCascoWhack = -1;
+        int idBossWhack = -1;
 
         View.OnTouchListener touch = new View.OnTouchListener() {
             @Override
@@ -81,20 +84,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 switch(event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         for (int i = 1; i <= numTopos; i++) {
-                        if (i == 1) {
-                            int idTocado = r.getIdentifier("topo", "id", name);
-                            if (view.getId() == idTocado) {
-                                ocultarTopo(0);
-                                sumarPuntos(10);
-                            }
-                        } else {
                             int idTocado = r.getIdentifier("topo" + i, "id", name);
                             if (view.getId() == idTocado) {
                                 ocultarTopo(i - 1);
                                 sumarPuntos(10);
                             }
                         }
-                    }
                     break;
                 }
                 return true;
@@ -102,30 +97,26 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         };
 
         for(int i = 1; i <= numTopos; i++) {
-            if (i == 1) {
-                id = r.getIdentifier("topo", "id", name);
-                idConCasco = r.getIdentifier("topoCasco", "id", name);
-                idWhack = r.getIdentifier("topoWhack", "id", name);
-                idWhackCasco = r.getIdentifier("topoCascoWhack", "id", name);
-
-
-            }
-            else {
-                id = r.getIdentifier("topo" + i, "id", name);
-                idConCasco = r.getIdentifier("topoCasco" + i, "id", name);
-                idWhack = r.getIdentifier("topoWhack" + i, "id", name);
-                idWhackCasco = r.getIdentifier("topoCascoWhack" + i, "id", name);
-            }
+            id = r.getIdentifier("topo" + i, "id", name);
+            idConCasco = r.getIdentifier("topoCasco" + i, "id", name);
+            idBoss = r.getIdentifier("topoBoss" + i, "id", name);
+            idWhack = r.getIdentifier("topoWhack" + i, "id", name);
+            idCascoWhack = r.getIdentifier("topoCascoWhack" + i, "id", name);
+            idBossWhack = r.getIdentifier("topoBossWhack" + i, "id", name);
 
             topo = (ImageView) findViewById(id);
             topoCasco = (ImageView) findViewById(idConCasco);
+            topoBoss = (ImageView) findViewById(idBoss);
             whack = (ImageView) findViewById(idWhack);
-            whackCasco = (ImageView) findViewById(idWhackCasco);
+            whackCasco = (ImageView) findViewById(idCascoWhack);
+            whackBoss = (ImageView) findViewById(idBossWhack);
 
             topo.setVisibility(View.GONE);
             topoCasco.setVisibility(View.GONE);
+            topoBoss.setVisibility(View.GONE);
             whack.setVisibility(View.GONE);
             whackCasco.setVisibility(View.GONE );
+            whackBoss.setVisibility(View.GONE);
 
             topo.setOnTouchListener(touch);
             topoCasco.setOnTouchListener(touch);
