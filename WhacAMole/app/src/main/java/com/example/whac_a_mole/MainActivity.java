@@ -73,24 +73,25 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 Log.d("OnTouchListener", "Topo tocado");
-                int prueba = view.getId();
-                Log.d("fuente", String.valueOf(prueba));
-                 for (int i = 1; i <= numTopos; i++) {
-                            if (i == 1) {
-                                int idTocado = r.getIdentifier("topo", "id", name);
-                                if (view.getId() == idTocado) {
-                                    ocultarTopo(0);
-                                    sumarPuntos(10);
-                                }
-
-                            } else {
-                                int idTocado = r.getIdentifier("topo" + i, "id", name);
-                                if (view.getId() == idTocado) {
-                                    ocultarTopo(i - 1);
-                                    sumarPuntos(10);
-                                }
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        for (int i = 1; i <= numTopos; i++) {
+                        if (i == 1) {
+                            int idTocado = r.getIdentifier("topo", "id", name);
+                            if (view.getId() == idTocado) {
+                                ocultarTopo(0);
+                                sumarPuntos(10);
+                            }
+                        } else {
+                            int idTocado = r.getIdentifier("topo" + i, "id", name);
+                            if (view.getId() == idTocado) {
+                                ocultarTopo(i - 1);
+                                sumarPuntos(10);
                             }
                         }
+                    }
+                    break;
+                }
                 return true;
             }
         };
