@@ -89,6 +89,12 @@
             app:srcCompat="@drawable/agujero" />
 
         <ImageView
+            android:id="@+id/cincoSegundos"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
             android:id="@+id/bomba1"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -166,6 +172,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba2"
@@ -247,6 +259,12 @@
             app:srcCompat="@drawable/agujero" />
 
         <ImageView
+            android:id="@+id/cincoSegundos3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
             android:id="@+id/bomba3"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -322,6 +340,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba4"
@@ -400,6 +424,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba5"
@@ -481,6 +511,12 @@
             app:srcCompat="@drawable/agujero" />
 
         <ImageView
+            android:id="@+id/cincoSegundos6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
             android:id="@+id/bomba6"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -556,6 +592,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba7"
@@ -637,6 +679,12 @@
             app:srcCompat="@drawable/agujero" />
 
         <ImageView
+            android:id="@+id/cincoSegundos8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
             android:id="@+id/bomba8"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -716,6 +764,12 @@
             app:srcCompat="@drawable/agujero" />
 
         <ImageView
+            android:id="@+id/cincoSegundos9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
             android:id="@+id/bomba9"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -793,6 +847,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba10"
