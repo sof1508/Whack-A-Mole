@@ -13,7 +13,6 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -27,7 +26,6 @@ import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.Delayed;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 
@@ -44,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ArrayList<Integer> bombaId = new ArrayList<Integer>();
     ArrayList<Integer> bombaOnId = new ArrayList<Integer>();
     ArrayList<Integer> boomId = new ArrayList<Integer>();
+    ArrayList<Integer> timerId = new ArrayList<Integer>();
 
     int numTopos = 10;
     ArrayList<Boolean> hoyoSelecionados = new ArrayList<Boolean>();
@@ -52,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ArrayList<Boolean> topoCascoOn = new ArrayList<Boolean>();
     ArrayList<Boolean> topoBossOn = new ArrayList<Boolean>();
     ArrayList<Boolean> bombaEncendida = new ArrayList<Boolean>();
+    ArrayList<Boolean> timerArray = new ArrayList<Boolean>();
     AlertDialog.Builder construirDialogo;
     AlertDialog dialogo;
     GestureDetectorCompat mDet;
@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         ImageView bomba;
         ImageView bombaOn;
         ImageView boom;
+        ImageView time;
 
         int id = -1;
         int idConCasco = -1;
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int idBomba = -1;
         int idBombaOn = -1;
         int idBoom = -1;
+        int idTime = -1;
 
         for(int i = 1; i <= numTopos; i++) {
             int iD = i;
@@ -158,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             idBomba = r.getIdentifier("bomba" + i, "id", name);
             idBombaOn = r.getIdentifier("bombaOn" + i, "id", name);
             idBoom = r.getIdentifier("boom" + i, "id", name);
+            idTime = r.getIdentifier("time" + i, "id", name);
 
             topo = (ImageView) findViewById(id);
             topoCasco = (ImageView) findViewById(idConCasco);
@@ -168,16 +171,18 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             bomba = (ImageView) findViewById(idBomba);
             bombaOn = (ImageView) findViewById(idBombaOn);
             boom = (ImageView) findViewById(idBoom);
+            time = (ImageView) findViewById(idTime);
 
             topo.setVisibility(View.GONE);
             topoCasco.setVisibility(View.GONE);
             topoBoss.setVisibility(View.GONE);
             whack.setVisibility(View.GONE);
-            whackCasco.setVisibility(View.GONE );
-            whackBoss.setVisibility(View.GONE );
-            bomba.setVisibility(View.GONE );
-            bombaOn.setVisibility(View.GONE );
-            boom.setVisibility(View.GONE );
+            whackCasco.setVisibility(View.GONE);
+            whackBoss.setVisibility(View.GONE);
+            bomba.setVisibility(View.GONE);
+            bombaOn.setVisibility(View.GONE);
+            boom.setVisibility(View.GONE);
+            time.setVisibility(View.GONE);
 
             topo.setOnTouchListener(new View.OnTouchListener() {
                 private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
@@ -252,7 +257,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 }
             });
 
-
             bomba.setOnTouchListener(new View.OnTouchListener() {
                 private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
                     @Override
@@ -261,6 +265,21 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                         ocultarBomba(iD - 1);
                         whackBomba(iD - 1);
                         return true;
+                    }
+                });
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    gDet.onTouchEvent(motionEvent);
+                    return true;
+                }
+            });
+
+            time.setOnTouchListener(new View.OnTouchListener() {
+                private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
+                    @Override
+                    public void onLongPress(MotionEvent e) {
+                        Log.d("", "mas tiempo");
+                        ocultarTime(iD - 1);
                     }
                 });
                 @Override
@@ -279,6 +298,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             bombaId.add(idBomba);
             bombaOnId.add(idBombaOn);
             boomId.add(idBoom);
+            timerId.add(idTime);
 
             hoyoSelecionados.add(false);
             topoTocado.add(false);
@@ -286,7 +306,36 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             topoCascoOn.add(false);
             topoBossOn.add(false);
             bombaEncendida.add(false);
+            timerArray.add(false);
         }
+    }
+
+    public void mostrarTime() {
+        int indice = (int)(random.nextDouble()*10);
+        if (timerArray.get(indice) == false) {
+            hoyoSelecionados.set(indice,true);
+            timerArray.set(indice, true);
+            int randomId = (int)timerId.get(indice);
+            ImageView time = (ImageView) findViewById(randomId);
+            time.setVisibility(View.VISIBLE);
+
+            int delay = (int)(random.nextDouble()* 2000 + 1000);
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask(){
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ocultarTime(indice);
+                        }
+                    });
+                }
+            };
+            timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
+
+        }
+        else {}
     }
 
     public void mostrarTopo(){
@@ -403,6 +452,28 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         } else {
             mostrarBomba();
         }
+    }
+
+    public void ocultarTime(int indice) {
+        int id = timerId.get(indice);
+        ImageView time = findViewById(id);
+        time.setVisibility(View.GONE);
+        timerArray.set(indice, false);
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(!timerArray.get(indice)){
+                            hoyoSelecionados.set(indice, false);
+                        }
+                    }
+                });
+            }
+        };
+        timer.schedule(task, 1300);
     }
 
     public void ocultarTopo(int indice) {
@@ -742,6 +813,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                    mostrarBomba();
                 if(millisUntilFinished / 1000 == 23 && puntuacion >= 300)
                     mostrarBomba();
+                if (millisUntilFinished / 1000 == 30 && puntuacion <= 500)
+                    mostrarTime();
 
             }
 

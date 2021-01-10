@@ -148,6 +148,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/time1"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/cincosegundos" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -232,6 +238,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/time2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
     </FrameLayout>
 
@@ -318,6 +330,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/time3"
+            android:layout_width="wrap_content"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -400,6 +418,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/time4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
     </FrameLayout>
 
@@ -484,6 +508,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/time5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
     </FrameLayout>
 
@@ -570,6 +600,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/time6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -652,6 +688,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/time7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
     </FrameLayout>
 
@@ -738,6 +780,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/time8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -823,6 +871,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/time9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -907,6 +961,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/time10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
 
     </FrameLayout>
 
