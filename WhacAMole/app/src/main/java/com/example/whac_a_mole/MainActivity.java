@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -32,8 +33,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ImageView image;
     ImageView topoGlobal;
 
+    MediaPlayer mediaPlayer;
     SoundPool soundPool;
-    int idExplosion, idBossAlert;
+    int idExplosion, idBossAlert, idAlarma, idWhack;
 
     int global = 0;
 
@@ -89,9 +91,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void setUpSonido(){
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.danger);
+
         soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         idExplosion = soundPool.load(getApplicationContext(),R.raw.explosion, 0 );
         idBossAlert = soundPool.load(getApplicationContext(),R.raw.bossalert, 0 );
+        idWhack = soundPool.load(getApplicationContext(),R.raw.whack, 0 );
+
     }
 
     public void activarExplosion(){
@@ -100,6 +106,17 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     public void activarBossAlert(){
         soundPool.play(idBossAlert,1,1,1,0,1);
+    }
+
+    public void activarWhack(){
+        soundPool.play(idWhack,1,1,1,0,1);
+    }
+
+    public void activarAlarma(){
+        mediaPlayer.start();
+    }
+    public void pararAlarma() {
+        mediaPlayer.stop();
     }
 
     public void setUpTopos() {
@@ -469,6 +486,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public void whackTopo(int indice){
         int id = (int)toposWhackId.get(indice);
         ImageView topoWhack = (ImageView) findViewById(id);
+        activarWhack();
         topoWhack.setVisibility(View.VISIBLE);
         topoOn.set(indice,false);
         sumarPuntos(10);
@@ -503,6 +521,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public void whackTopoCasco(int indice){
         int id = (int)toposCascoWhackId.get(indice);
         ImageView topoWhack = (ImageView) findViewById(id);
+        activarWhack();
         topoWhack.setVisibility(View.VISIBLE);
         topoCascoOn.set(indice,false);
         sumarPuntos(20);
@@ -537,6 +556,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public void whackTopoBoss(int indice){
         int id = (int)toposBossWhackId.get(indice);
         ImageView topoBossWhack = (ImageView) findViewById(id);
+        activarWhack();
         topoBossWhack.setVisibility(View.VISIBLE);
         topoBossOn.set(indice,false);
         sumarPuntos(50);
@@ -651,7 +671,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     public void run() {
                         alarma.setVisibility(View.VISIBLE);
                         if(stopAlarma) {
+                            pararAlarma();
                             alarma.setVisibility(View.GONE);
+                            pararAlarma();
                             timerAlarma.cancel();
                             timerAlarma.purge();
                             taskAlarma.cancel();
@@ -665,6 +687,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                                     @Override
                                     public void run() {
                                         alarma.setVisibility(View.GONE);
+
                                     }
                                 });
                             }
@@ -687,13 +710,15 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             TextView contador = (TextView)findViewById(R.id.contador);
             public void onTick(long millisUntilFinished) {
                 contador.setText("00:" + String.format("%02d", millisUntilFinished / 1000));
-                if(!aparecerBoss && puntuacion >= 250)
+                if(!aparecerBoss && puntuacion >= 250) {
                     iniciarAlarma();
+                    activarAlarma();
+                }
                 if(!aparecerBoss && puntuacion >= 300)
                     mostrarTopoBoss();
-                if(millisUntilFinished / 1000 == 45 && puntuacion >= 120)
+                if(millisUntilFinished / 1000 == 46 && puntuacion >= 120)
                    mostrarBomba();
-                if(millisUntilFinished / 1000 == 25 && puntuacion >= 300)
+                if(millisUntilFinished / 1000 == 23 && puntuacion >= 300)
                     mostrarBomba();
 
             }
