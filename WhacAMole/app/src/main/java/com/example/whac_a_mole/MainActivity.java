@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     Timer timerAlarma;
     TimerTask taskAlarma;
 
+    long touchDownMs, lastTapTimeMs;
+    int numberOfTaps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -226,7 +229,30 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 });
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
-                    gDet.onTouchEvent(motionEvent);
+                    switch (motionEvent.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            touchDownMs = System.currentTimeMillis();
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            //handler.removeCallbacksAndMessages(null);
+                            if ((System.currentTimeMillis() - touchDownMs) > ViewConfiguration.getTapTimeout()) {
+                                numberOfTaps = 0;
+                                lastTapTimeMs = 0;
+                                break;
+                            }
+                            if (numberOfTaps > 0
+                                    && (System.currentTimeMillis() - lastTapTimeMs) < ViewConfiguration.getDoubleTapTimeout()) {
+                                numberOfTaps += 1;
+                            } else {
+                                numberOfTaps = 1;
+                            }
+                            lastTapTimeMs = System.currentTimeMillis();
+                            if (numberOfTaps == 5) {
+                                topoTocado.set(iD - 1, true);
+                                ocultarTopoBoss(iD - 1);
+                                whackTopoBoss(iD - 1);
+                            }
+                    }
                     return true;
                 }
             });
