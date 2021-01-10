@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     ImageView image;
     ImageView topoGlobal;
 
+    SoundPool soundPool;
+    int idExplosion, idBossAlert;
+
     int global = 0;
 
     ArrayList<Integer> toposId = new ArrayList<Integer>();
@@ -44,7 +49,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     int numTopos = 10;
     ArrayList<Boolean> hoyoSelecionados = new ArrayList<Boolean>();
-    ArrayList<Boolean> topoWhack = new ArrayList<Boolean>();
+    ArrayList<Boolean> topoTocado = new ArrayList<Boolean>();
+    ArrayList<Boolean> topoOn = new ArrayList<Boolean>();
+    ArrayList<Boolean> topoCascoOn = new ArrayList<Boolean>();
+    ArrayList<Boolean> topoBossOn = new ArrayList<Boolean>();
     ArrayList<Boolean> bombaEncendida = new ArrayList<Boolean>();
     AlertDialog.Builder construirDialogo;
     AlertDialog dialogo;
@@ -68,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         setUpTopos();
         setUpPuntuacion();
+        setUpSonido();
         jugar();
     }
 
@@ -77,6 +86,20 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    public void setUpSonido(){
+        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+        idExplosion = soundPool.load(getApplicationContext(),R.raw.explosion, 0 );
+        idBossAlert = soundPool.load(getApplicationContext(),R.raw.bossalert, 0 );
+    }
+
+    public void activarExplosion(){
+        soundPool.play(idExplosion,1,1,1,0,1);
+    }
+
+    public void activarBossAlert(){
+        soundPool.play(idBossAlert,1,1,1,0,1);
     }
 
     public void setUpTopos() {
@@ -144,10 +167,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
                     @Override
                     public boolean onDown(MotionEvent e) {
-                        topoWhack.set(iD - 1, true);
+                        topoTocado.set(iD - 1, true);
                         ocultarTopo(iD - 1);
                         whackTopo(iD - 1);
-                        sumarPuntos(10);
                         return super.onDown(e);
                     }
                 });
@@ -162,10 +184,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
                    @Override
                    public boolean onDoubleTap(MotionEvent e) {
-                       topoWhack.set(iD - 1, true);
+                       topoTocado.set(iD - 1, true);
                        ocultarTopoCasco(iD - 1);
                        whackTopoCasco(iD - 1);
-                       sumarPuntos(20);
                        return super.onDoubleTap(e);
                    }
                 });
@@ -180,10 +201,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
                     @Override
                     public void onLongPress(MotionEvent e) {
-                        topoWhack.set(iD - 1, true);
+                        topoTocado.set(iD - 1, true);
                         ocultarTopoBoss(iD - 1);
                         whackTopoBoss(iD - 1);
-                        sumarPuntos(50);
                     }
                 });
                 @Override
@@ -222,7 +242,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             boomId.add(idBoom);
 
             hoyoSelecionados.add(false);
-            topoWhack.add(false);
+            topoTocado.add(false);
+            topoOn.add(false);
+            topoCascoOn.add(false);
+            topoBossOn.add(false);
             bombaEncendida.add(false);
         }
     }
@@ -231,6 +254,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int indice = (int)(random.nextDouble()*10);
         if (hoyoSelecionados.get(indice) == false) {
             hoyoSelecionados.set(indice,true);
+            topoOn.set(indice,true);
             int randomId = (int)toposId.get(indice);
             ImageView topo = (ImageView) findViewById(randomId);
             topo.setVisibility(View.VISIBLE);
@@ -253,12 +277,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         }
         else{
+            mostrarTopo();
         }
     }
 
     public void mostrarTopoCasco() {
         int indice = (int) (random.nextDouble() * 10);
         if (hoyoSelecionados.get(indice) == false) {
+            topoCascoOn.set(indice,true);
             hoyoSelecionados.set(indice, true);
             int randomId = (int) toposCascoId.get(indice);
             ImageView topoCasco = (ImageView) findViewById(randomId);
@@ -279,16 +305,19 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             };
             timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
         } else {
+            mostrarTopoCasco();
         }
     }
 
     public void mostrarTopoBoss() {
         int indice = (int) (random.nextDouble() * 10);
         if (hoyoSelecionados.get(indice) == false) {
+            topoBossOn.set(indice,true);
             hoyoSelecionados.set(indice, true);
             aparecerBoss = true;
             int randomId = (int) toposBossId.get(indice);
             ImageView topoBoss = (ImageView) findViewById(randomId);
+            activarBossAlert();
             topoBoss.setVisibility(View.VISIBLE);
 
             int delay = (int) (random.nextDouble() * 3500 + 2000);
@@ -306,6 +335,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             };
             timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
         } else {
+            mostrarTopoBoss();
         }
     }
 
@@ -332,6 +362,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             };
             timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
         } else {
+            mostrarBomba();
         }
     }
 
@@ -339,6 +370,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int id = (int)toposId.get(indice);
         ImageView topo = (ImageView) findViewById(id);
         topo.setVisibility(View.GONE);
+        topoOn.set(indice,false);
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -346,19 +378,21 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(!topoWhack.get(indice))
+                        if(!topoTocado.get(indice)){
                             hoyoSelecionados.set(indice,false);
+                        }
                     }
                 });
             }
         };
-        timer.schedule(task, 1000);
+        timer.schedule(task, 1300);
     }
 
     public void ocultarTopoCasco(int indice){
         int id = (int)toposCascoId.get(indice);
         ImageView topoCasco = (ImageView) findViewById(id);
         topoCasco.setVisibility(View.GONE);
+        topoCascoOn.set(indice,false);
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -366,13 +400,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(!topoWhack.get(indice))
+                        if(!topoTocado.get(indice)){
                             hoyoSelecionados.set(indice,false);
+                        }
                     }
                 });
             }
         };
-        timer.schedule(task, 1000);
+        timer.schedule(task, 1200);
 
     }
 
@@ -380,6 +415,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int id = (int) toposBossId.get(indice);
         ImageView topoBoss = (ImageView) findViewById(id);
         topoBoss.setVisibility(View.GONE);
+        topoBossOn.set(indice,false);
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -389,13 +425,14 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     @Override
                     public void run() {
                         stopAlarma = true;
-                        if(!topoWhack.get(indice))
+                        if(!topoTocado.get(indice)){
                             hoyoSelecionados.set(indice,false);
+                        }
                     }
                 });
             }
         };
-        timer.schedule(task, 1000);
+        timer.schedule(task, 1500);
     }
 
         public void ocultarBomba(int indice) {
@@ -415,7 +452,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     });
                 }
             };
-            timer.schedule(task, 1000);
+            timer.schedule(task, 1100);
         }
     /*
     * Método que devuelve el ImageView de un topo
@@ -433,6 +470,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int id = (int)toposWhackId.get(indice);
         ImageView topoWhack = (ImageView) findViewById(id);
         topoWhack.setVisibility(View.VISIBLE);
+        topoOn.set(indice,false);
+        sumarPuntos(10);
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -447,12 +486,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        topoTocado.set(indice,false);
                                         hoyoSelecionados.set(indice,false);
                                     }
                                 });
                             }
                         };
-                        timer.schedule(task, 500);
+                        timer.schedule(task, 1200);
                     }
                 });
             }
@@ -464,6 +504,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int id = (int)toposCascoWhackId.get(indice);
         ImageView topoWhack = (ImageView) findViewById(id);
         topoWhack.setVisibility(View.VISIBLE);
+        topoCascoOn.set(indice,false);
+        sumarPuntos(20);
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -478,12 +520,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        topoTocado.set(indice,false);
                                         hoyoSelecionados.set(indice,false);
                                     }
                                 });
                             }
                         };
-                        timer.schedule(task, 500);
+                        timer.schedule(task, 1300);
                     }
                 });
             }
@@ -495,6 +538,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         int id = (int)toposBossWhackId.get(indice);
         ImageView topoBossWhack = (ImageView) findViewById(id);
         topoBossWhack.setVisibility(View.VISIBLE);
+        topoBossOn.set(indice,false);
+        sumarPuntos(50);
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -509,12 +554,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        topoTocado.set(indice,false);
                                         hoyoSelecionados.set(indice,false);
                                     }
                                 });
                             }
                         };
-                        timer.schedule(task, 500);
+                        timer.schedule(task, 1100);
                     }
                 });
             }
@@ -537,7 +583,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     @Override
                     public void run() {
                         bombaOn.setVisibility(View.GONE);
+                        activarExplosion();
                         boom.setVisibility(View.VISIBLE);
+                        iniciarExplosion();
                         Timer timer = new Timer();
                         TimerTask task = new TimerTask() {
                             @Override
@@ -547,7 +595,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                                     public void run() {
                                         boom.setVisibility(View.GONE);
                                         bombaEncendida.set(indice,false);
-                                        iniciarExplosion();
                                         TimerTask task = new TimerTask() {
                                             @Override
                                             public void run() {
@@ -559,7 +606,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                                                 });
                                             }
                                         };
-                                        timer.schedule(task, 500);
+                                        timer.schedule(task, 1000);
                                     }
                                 });
                             }
@@ -573,7 +620,25 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void iniciarExplosion(){
+        for(int i = 0; i < numTopos; i++) {
+            if(topoOn.get(i)) {
+                topoTocado.set(i, true);
+                ocultarTopo(i);
+                whackTopo(i);
 
+            }
+            if(topoCascoOn.get(i)) {
+                topoTocado.set(i, true);
+                ocultarTopoCasco(i);
+                whackTopoCasco(i);
+            }
+            if(topoBossOn.get(i)){
+                topoTocado.set(i, true);
+                ocultarTopoBoss(i);
+                whackTopoBoss(i);
+            }
+
+        }
     }
     public void iniciarAlarma(){
         View alarma = (View)findViewById(R.id.alarma);
@@ -626,8 +691,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                     iniciarAlarma();
                 if(!aparecerBoss && puntuacion >= 300)
                     mostrarTopoBoss();
-                if(millisUntilFinished / 1000 == 30 && puntuacion >= 180)
+                if(millisUntilFinished / 1000 == 45 && puntuacion >= 120)
                    mostrarBomba();
+                if(millisUntilFinished / 1000 == 25 && puntuacion >= 300)
+                    mostrarBomba();
 
             }
 
