@@ -89,6 +89,30 @@
             app:srcCompat="@drawable/agujero" />
 
         <ImageView
+            android:id="@+id/cincoSegundos"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba1"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn1"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom1"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
+
+        <ImageView
             android:id="@+id/topo1"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -124,24 +148,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba1"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn1"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom1"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -166,6 +172,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo2"
@@ -203,24 +233,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba2"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn2"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom2"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -245,6 +257,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo3"
@@ -282,24 +318,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba3"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn3"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom3"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -322,6 +340,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo4"
@@ -359,24 +401,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba4"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn4"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom4"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -400,6 +424,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo5"
@@ -437,23 +485,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba5"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn5"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom5"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
     </FrameLayout>
 
     <FrameLayout
@@ -478,6 +509,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo6"
@@ -515,23 +570,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba6"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn6"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom6"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
     </FrameLayout>
 
     <FrameLayout
@@ -554,6 +592,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo7"
@@ -591,24 +653,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba7"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn7"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom7"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -633,6 +677,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo8"
@@ -670,24 +738,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba8"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn8"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom8"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -712,6 +762,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo9"
@@ -749,24 +823,6 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
-        <ImageView
-            android:id="@+id/bomba9"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn9"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom9"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
-
     </FrameLayout>
 
     <FrameLayout
@@ -791,6 +847,30 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
+
+        <ImageView
+            android:id="@+id/cincoSegundos10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/cincosegundos" />
+
+        <ImageView
+            android:id="@+id/bomba10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
         <ImageView
             android:id="@+id/topo10"
@@ -827,24 +907,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
-
-        <ImageView
-            android:id="@+id/bomba10"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bomba" />
-
-        <ImageView
-            android:id="@+id/bombaOn10"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/bombaon" />
-
-        <ImageView
-            android:id="@+id/boom10"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/boom" />
 
     </FrameLayout>
 
