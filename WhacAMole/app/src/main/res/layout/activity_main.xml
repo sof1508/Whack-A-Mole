@@ -123,6 +123,18 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/bomba1"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn1"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -183,6 +195,18 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/bomba2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
 
     </FrameLayout>
 
@@ -245,6 +269,18 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/bomba3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -303,6 +339,18 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/bomba4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
 
     </FrameLayout>
 
@@ -363,6 +411,18 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/bomba5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
     </FrameLayout>
 
     <FrameLayout
@@ -423,6 +483,18 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/bomba6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
     </FrameLayout>
 
     <FrameLayout
@@ -481,6 +553,18 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/bomba7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
 
     </FrameLayout>
 
@@ -543,6 +627,18 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/bomba8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -604,6 +700,18 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
 
+        <ImageView
+            android:id="@+id/bomba9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -664,6 +772,18 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bosswhack" />
+
+        <ImageView
+            android:id="@+id/bomba10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bomba" />
+
+        <ImageView
+            android:id="@+id/bombaOn10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/bombaon" />
 
     </FrameLayout>
 
