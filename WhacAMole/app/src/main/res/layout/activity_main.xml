@@ -135,6 +135,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
 
+        <ImageView
+            android:id="@+id/boom1"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -207,6 +213,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom2"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
     </FrameLayout>
 
@@ -281,6 +293,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
 
+        <ImageView
+            android:id="@+id/boom3"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -351,6 +369,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom4"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
     </FrameLayout>
 
@@ -423,6 +447,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom5"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
     </FrameLayout>
 
     <FrameLayout
@@ -495,6 +525,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom6"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
     </FrameLayout>
 
     <FrameLayout
@@ -565,6 +601,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom7"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
     </FrameLayout>
 
@@ -639,6 +681,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
 
+        <ImageView
+            android:id="@+id/boom8"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -712,6 +760,12 @@
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
 
+        <ImageView
+            android:id="@+id/boom9"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -784,6 +838,12 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/bombaon" />
+
+        <ImageView
+            android:id="@+id/boom10"
+            android:layout_width="118dp"
+            android:layout_height="89dp"
+            app:srcCompat="@drawable/boom" />
 
     </FrameLayout>
 
