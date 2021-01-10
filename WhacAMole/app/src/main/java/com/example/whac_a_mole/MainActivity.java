@@ -30,14 +30,10 @@ import java.util.TimerTask;
 import java.util.concurrent.Delayed;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
-    ImageView image;
-    ImageView topoGlobal;
 
     MediaPlayer mediaPlayer;
     SoundPool soundPool;
     int idExplosion, idBossAlert, idAlarma, idWhack;
-
-    int global = 0;
 
     ArrayList<Integer> toposId = new ArrayList<Integer>();
     ArrayList<Integer> toposWhackId = new ArrayList<Integer>();
@@ -85,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         jugar();
     }
 
-    //Método para reiniciar el juego
     protected void restart() {
         Intent intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -101,24 +96,24 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         idExplosion = soundPool.load(getApplicationContext(),R.raw.explosion, 0 );
         idBossAlert = soundPool.load(getApplicationContext(),R.raw.bossalert, 0 );
         idWhack = soundPool.load(getApplicationContext(),R.raw.whack, 0 );
-
     }
 
-    public void activarExplosion(){
+    public void activarExplosion() {
         soundPool.play(idExplosion,1,1,1,0,1);
     }
 
-    public void activarBossAlert(){
+    public void activarBossAlert() {
         soundPool.play(idBossAlert,1,1,1,0,1);
     }
 
-    public void activarWhack(){
+    public void activarWhack() {
         soundPool.play(idWhack,1,1,1,0,1);
     }
 
     public void activarAlarma(){
         mediaPlayer.start();
     }
+
     public void pararAlarma() {
         mediaPlayer.stop();
     }
@@ -219,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             });
 
             topoBoss.setOnTouchListener(new View.OnTouchListener() {
-                private GestureDetector gDet = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
+                private GestureDetector gDet = new GestureDetector(getApplicationContext(),  new GestureDetector.SimpleOnGestureListener() {
                     @Override
                     public void onLongPress(MotionEvent e) {
                         topoTocado.set(iD - 1, true);
@@ -321,7 +316,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         }
         else{
-            mostrarTopo();
+            //mostrarTopo();
         }
     }
 
@@ -349,7 +344,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             };
             timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
         } else {
-            mostrarTopoCasco();
+            //mostrarTopoCasco();
         }
     }
 
@@ -379,7 +374,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             };
             timer.schedule(task, delay); // disminuir según tiempo --> aparición más rápida
         } else {
-            mostrarTopoBoss();
+            //mostrarTopoBoss();
         }
     }
 
@@ -452,7 +447,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             }
         };
         timer.schedule(task, 1200);
-
     }
 
     public void ocultarTopoBoss(int indice) {
@@ -479,25 +473,26 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         timer.schedule(task, 1500);
     }
 
-        public void ocultarBomba(int indice) {
-            int id = (int)bombaId.get(indice);
-            ImageView bomba = (ImageView) findViewById(id);
-            bomba.setVisibility(View.GONE);
-            Timer timer = new Timer();
-            TimerTask task = new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(!bombaEncendida.get(indice))
-                                hoyoSelecionados.set(indice,false);
-                        }
-                    });
-                }
-            };
-            timer.schedule(task, 1100);
-        }
+    public void ocultarBomba(int indice) {
+        int id = (int)bombaId.get(indice);
+        ImageView bomba = (ImageView) findViewById(id);
+        bomba.setVisibility(View.GONE);
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(!bombaEncendida.get(indice))
+                            hoyoSelecionados.set(indice,false);
+                    }
+                });
+            }
+        };
+        timer.schedule(task, 1100);
+    }
+
     /*
     * Método que devuelve el ImageView de un topo
     * El parámetro es el id del topo
@@ -687,6 +682,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         }
     }
+
     public void iniciarAlarma(){
         View alarma = (View)findViewById(R.id.alarma);
         timerAlarma = new Timer();
@@ -727,7 +723,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         timerAlarma.scheduleAtFixedRate(taskAlarma, new Date(), 1000);
     }
-
 
     public void jugar(){
         //cronometro del juego
@@ -799,7 +794,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         puntos.setText("Puntos: " + puntuacion);
     }
 
-
     public void sumarPuntos(int punto){
         TextView puntos = (TextView)findViewById(R.id.puntos);
         puntuacion = puntuacion + punto;
@@ -833,7 +827,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         return super.onTouchEvent(event);
     }
 
-
     @Override
     public boolean onSingleTapConfirmed(MotionEvent motionEvent) {
         return false;
@@ -841,7 +834,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public boolean onDoubleTap(MotionEvent motionEvent) {
-        Log.d("MAINACTIVITY", "ONDOUBLETAP");
         return true;
     }
 
