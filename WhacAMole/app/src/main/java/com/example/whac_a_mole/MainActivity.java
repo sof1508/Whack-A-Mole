@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     public void setUpSonido(){
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.danger);
+        mediaPlayer.setVolume(0.5f,0.5f);
 
         soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         idExplosion = soundPool.load(getApplicationContext(),R.raw.explosion, 0 );
