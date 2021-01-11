@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     AlertDialog dialogo;
     GestureDetectorCompat mDet;
     Random random = new Random();
-    int velocidadJuego = 350;
+    int velocidadJuego = 400;
     int puntuacion = 0;
     int tiempoJuego = 60000;
     int globalTiempo;
@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     long touchDownMs, lastTapTimeMs;
     int numberOfTaps;
     long segundosRestantes;
+
+    boolean timeFlag1 = true, timeFlag2 = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     public void setUpSonido(){
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.danger);
-        mediaPlayer.setVolume(0.5f,0.5f);
+        mediaPlayer.setVolume(0.3f,0.3f);
 
         soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         idExplosion = soundPool.load(getApplicationContext(),R.raw.explosion, 0 );
@@ -470,7 +472,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 });
             }
         };
-        timer.schedule(task, 1300);
+        timer.schedule(task, 1400);
     }
 
     public void ocultarTopo(int indice) {
@@ -492,7 +494,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 });
             }
         };
-        timer.schedule(task, 1300);
+        timer.schedule(task, 1400);
     }
 
     public void ocultarTopoCasco(int indice){
@@ -514,7 +516,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 });
             }
         };
-        timer.schedule(task, 1300);
+        timer.schedule(task, 1400);
     }
 
     public void ocultarTopoBoss(int indice) {
@@ -538,7 +540,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 });
             }
         };
-        timer.schedule(task, 1300);
+        timer.schedule(task, 1400);
     }
 
     public void ocultarBomba(int indice) {
@@ -805,10 +807,20 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 if((segundosRestantes == 20 || segundosRestantes == 30 || segundosRestantes == 40) && puntuacion >= 300)
                     mostrarBomba();
                 if (segundosRestantes == 20 || segundosRestantes == 45)
-                    mostrarTime();
+                    if (timeFlag1 || timeFlag2) {
+                        if (timeFlag1) {
+                            timeFlag1 = false;
+                            mostrarTime();
+                        }
+
+                        if (!timeFlag1 && timeFlag2) {
+                            timeFlag2 = false;
+                            mostrarTime();
+                        }
+                    }
 
                 decreaseTime();
-                //Log.d("", hoyoSelecionados.toString());
+                Log.d("", hoyoSelecionados.toString());
             }
 
             public void onFinish() {
