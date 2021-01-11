@@ -1,4 +1,4 @@
-package com.example.whac_a_mole;
+package com.example.whack_a_mole;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     long touchDownMs, lastTapTimeMs;
     int numberOfTaps;
+    long segundosRestantes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,14 +220,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             });
 
             topoBoss.setOnTouchListener(new View.OnTouchListener() {
-                private GestureDetector gDet = new GestureDetector(getApplicationContext(),  new GestureDetector.SimpleOnGestureListener() {
-                    @Override
-                    public void onLongPress(MotionEvent e) {
-                        topoTocado.set(iD - 1, true);
-                        ocultarTopoBoss(iD - 1);
-                        whackTopoBoss(iD - 1);
-                    }
-                });
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
                     switch (motionEvent.getAction()) {
@@ -802,6 +795,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         new CountDownTimer(tiempoJuego, 1000) {
             TextView contador = (TextView)findViewById(R.id.contador);
             public void onTick(long millisUntilFinished) {
+                segundosRestantes = millisUntilFinished / 1000;
                 contador.setText("00:" + String.format("%02d", millisUntilFinished / 1000));
                 if(!aparecerBoss && puntuacion >= 250) {
                     iniciarAlarma();
@@ -809,11 +803,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 }
                 if(!aparecerBoss && puntuacion >= 300)
                     mostrarTopoBoss();
-                if(millisUntilFinished / 1000 == 46 && puntuacion >= 120)
+                if(segundosRestantes == 46 && puntuacion >= 120)
                    mostrarBomba();
-                if(millisUntilFinished / 1000 == 23 && puntuacion >= 300)
+                if((segundosRestantes == 20 || segundosRestantes == 30 || segundosRestantes == 40) && puntuacion >= 300)
                     mostrarBomba();
-                if (millisUntilFinished / 1000 == 30 && puntuacion <= 500)
+                if (segundosRestantes == 20 || segundosRestantes == 45)
                     mostrarTime();
 
             }

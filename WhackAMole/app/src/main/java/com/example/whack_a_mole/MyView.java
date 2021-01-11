@@ -1,4 +1,4 @@
-package com.example.whac_a_mole;
+package com.example.whack_a_mole;
 
 import android.util.Log;
 import android.view.GestureDetector;
