@@ -89,12 +89,6 @@
             app:srcCompat="@drawable/agujero" />
 
         <ImageView
-            android:id="@+id/cincoSegundos"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
-
-        <ImageView
             android:id="@+id/bomba1"
             android:layout_width="118dp"
             android:layout_height="89dp"
@@ -149,9 +143,9 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time1"
+            android:id="@+id/timer1"
             android:layout_width="118dp"
-            android:layout_height="wrap_content"
+            android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
 
     </FrameLayout>
@@ -178,12 +172,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos2"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba2"
@@ -240,7 +228,7 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time2"
+            android:id="@+id/timer2"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
@@ -269,12 +257,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos3"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba3"
@@ -331,8 +313,8 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time3"
-            android:layout_width="wrap_content"
+            android:id="@+id/timer3"
+            android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
 
@@ -358,12 +340,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos4"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba4"
@@ -420,7 +396,7 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time4"
+            android:id="@+id/timer4"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
@@ -448,12 +424,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos5"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba5"
@@ -510,7 +480,7 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time5"
+            android:id="@+id/timer5"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
@@ -539,12 +509,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos6"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba6"
@@ -601,7 +565,7 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time6"
+            android:id="@+id/timer6"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
@@ -628,12 +592,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos7"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba7"
@@ -690,7 +648,7 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time7"
+            android:id="@+id/timer7"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
@@ -719,12 +677,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos8"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba8"
@@ -781,7 +733,7 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time8"
+            android:id="@+id/timer8"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
@@ -810,12 +762,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos9"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba9"
@@ -872,7 +818,7 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time9"
+            android:id="@+id/timer9"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />
@@ -901,12 +847,6 @@
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/agujero" />
-
-        <ImageView
-            android:id="@+id/cincoSegundos10"
-            android:layout_width="118dp"
-            android:layout_height="89dp"
-            app:srcCompat="@drawable/cincosegundos" />
 
         <ImageView
             android:id="@+id/bomba10"
@@ -963,7 +903,7 @@
             app:srcCompat="@drawable/bosswhack" />
 
         <ImageView
-            android:id="@+id/time10"
+            android:id="@+id/timer10"
             android:layout_width="118dp"
             android:layout_height="89dp"
             app:srcCompat="@drawable/cincosegundos" />

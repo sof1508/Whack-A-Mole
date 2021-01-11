@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             idBomba = r.getIdentifier("bomba" + i, "id", name);
             idBombaOn = r.getIdentifier("bombaOn" + i, "id", name);
             idBoom = r.getIdentifier("boom" + i, "id", name);
-            idTime = r.getIdentifier("time" + i, "id", name);
+            idTime = r.getIdentifier("timer" + i, "id", name);
 
             topo = (ImageView) findViewById(id);
             topoCasco = (ImageView) findViewById(idConCasco);
